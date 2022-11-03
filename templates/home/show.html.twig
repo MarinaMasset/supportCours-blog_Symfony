@@ -8,8 +8,7 @@
   <div class="container">
     <h1 class="title p-1">{{article.title}}</h1>
     <div class="img-fluid">
-      <img width="25%" src="{{asset('images/article.png')}}" alt="{{article.title}}"/>
-    </div>
+<img class="rounded mx-auto d-block" src="{{asset('images/blog/'~article.image)}}" alt="{{article.title}}"/>    </div>
     <div class="content text-justify">
       <p class="date">Ecrit le
         {{article.createdAt | date("d/m/Y") }}
@@ -19,7 +18,7 @@
         {{article.author}}
       </p>
       <h5 class="title">{{article.title}}</h5>
-      <p class="content">{{article.content}}</p>
+      <p class="content">{{article.content|raw}}</p>
     </div>
   </div>
 {% endblock %}
