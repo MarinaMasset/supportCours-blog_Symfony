@@ -29,10 +29,21 @@
                 {% endif %}
 
             </ul>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+        <form class="" role="search" method="post" action="{{ path('recherche')}}">
+        <div class="row g-3">
+          <div class="col">
+            <input type="text" class="form-control mr-2" name="title" placeholder="Recherche...">
+          </div>
+          <div class="col">
+            <input type="date" class="form-control mr-2" name="date" placeholder="Choisir une date">
+          </div>
+          <div class="w-auto">
+            <button type="submit" class="btn btn-primary mr-4">Chercher</button>
+          </div>
+        </div>
+      </form>
+
+
         </div>
     </div>
 </nav>
