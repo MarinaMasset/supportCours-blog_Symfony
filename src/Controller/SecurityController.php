@@ -20,12 +20,17 @@ class SecurityController extends AbstractController
         $this->manager = $manager;
     }
 
-    /**
-     * @Route("/register", name="security_register")
+     /**
+     * @Route("/register/{user_type}", name="security_register")
      */
-    public function register(Request $request, UserPasswordHasherInterface  $passwordHasher): Response
+    public function resgister(Request $request, UserPasswordHasherInterface $passwordHasher, $user_type): Response
     {
         $user = new User();
+        if($user_type === "admin" && $this->isGranted('ROLE_SUPER_ADMIN')){
+            $user->setRoles(['ROLE_ADMIN']);
+        }
+
+        //mapping entre l'entité et la structure du form
         $form = $this->createForm(RegisterType::class,$user);
 
         $form->handleRequest($request);
